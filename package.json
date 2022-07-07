@@ -3,13 +3,20 @@
   "version": "0.0.0",
   "packageManager": "pnpm@7.1.5",
   "description": "",
-  "keywords": [],
-  "license": "MIT",
   "author": "sudongyuer",
-  "repository": "https://github.com/sudongyuer/ts-starter",
-  "homepage": "https://github.com/sudongyuer/ts-starter#readme",
-  "bugs": "https://github.com/sudongyuer/ts-starter/issues",
+  "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
+  "homepage": "https://github.com/sudongyuer/ts-starter#readme",
+  "repository": "https://github.com/sudongyuer/ts-starter",
+  "bugs": "https://github.com/sudongyuer/ts-starter/issues",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,13 +28,6 @@
       ]
     }
   },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
-    }
-  },
   "files": [
     "dist"
   ],
@@ -35,8 +35,13 @@
     "dev": "unbuild --stub",
     "build": "unbuild",
     "test": "vitest",
+    "version": "changeset version",
+    "changeset": "changeset add",
+    "release": "pnpm run build && pnpm run release:only",
+    "release:only": "changeset publish",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --cache",
+    "lint-fix": "eslint . --fix",
     "try": "tsx src/index.ts"
   },
   "devDependencies": {
